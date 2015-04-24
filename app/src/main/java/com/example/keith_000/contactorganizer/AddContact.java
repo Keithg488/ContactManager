@@ -1,9 +1,10 @@
 package com.example.keith_000.contactorganizer;
 
 import android.content.Intent;
-import android.graphics.BitmapFactory;
-import android.support.v7.app.ActionBarActivity;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.Contacts;
+import android.support.v7.app.ActionBarActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.ContextMenu;
@@ -17,18 +18,18 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.TabHost;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import android.net.Uri;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Created by keith_000 on 4/22/2015.
+ */
+public class AddContact extends ActionBarActivity {
 
-public class MainActivity extends ActionBarActivity {
-
-   /* private static final int EDIT = 0, DELETE = 1;
+    private static final int EDIT = 0, DELETE = 1;
 
     EditText nameTxt, phoneTxt, emailTxt, addressTxt;
     ImageView contactImageImgView;
@@ -37,54 +38,12 @@ public class MainActivity extends ActionBarActivity {
     Uri imageUri = Uri.parse("android.resource://org.intracode.contactmanager/mipmap/ic_launcher.png");
     DatabaseHandler dbHandler;
     int longClickedItemIndex;
-    ArrayAdapter<Contact> contactAdapter;*/
+    ArrayAdapter<Contact> contactAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        addListenerOnButton();
-    }
-
-    public void addListenerOnButton() {
-
-         Button addBtn = (Button) findViewById(R.id.btnAdd);
-        addBtn.setOnClickListener(new View.OnClickListener() {
-
-            public void onClick(View view) {
-                Intent myIntent = new Intent(view.getContext(), AddContact.class);
-                startActivity(myIntent);
-            }
-        });
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
-
-
-
-/*
-
+        setContentView(R.layout.add_contact);
 
 
         nameTxt = (EditText) findViewById(R.id.txtName);
@@ -105,27 +64,9 @@ public class MainActivity extends ActionBarActivity {
             }
         });
 
-       TabHost tabHost = (TabHost) findViewById(R.id.tabHost);
 
-        tabHost.setup();
-
-        TabHost.TabSpec tabSpec = tabHost.newTabSpec("creator");
-        tabSpec.setContent(R.id.tabCreator);
-        tabSpec.setIndicator("creator");
-        tabHost.addTab(tabSpec);
-
-        tabSpec = tabHost.newTabSpec("list");
-        tabSpec.setContent(R.id.tabContactList);
-        tabSpec.setIndicator("list");
-        tabHost.addTab(tabSpec);
-*/
-
-
-
-
-/*
         final Button commitBtn = (Button) findViewById(R.id.btnCommit);
-        addBtn.setOnClickListener(new View.OnClickListener() {
+        commitBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Contact contact = new Contact(dbHandler.getContactsCount(), String.valueOf(nameTxt.getText()), String.valueOf(phoneTxt.getText()), String.valueOf(emailTxt.getText()), String.valueOf(addressTxt.getText()), imageUri);
@@ -137,7 +78,7 @@ public class MainActivity extends ActionBarActivity {
                     Toast.makeText(getApplicationContext(), String.valueOf(nameTxt.getText()) + " has been added to your Contacts!", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                    Toast.makeText(getApplicationContext(), String.valueOf(nameTxt.getText()) + " already exists. Please use a different name.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), String.valueOf(nameTxt.getText()) + " already exists. Please use a different name.", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -198,16 +139,16 @@ public class MainActivity extends ActionBarActivity {
         return super.onContextItemSelected(item);
     }
 
-private boolean contactExists(Contact contact) {
-    String name = contact.getName();
-    int contactCount = Contacts.size();
-    for(int i = 0; i < contactCount; i++)
-    {
-        if (name.compareToIgnoreCase(Contacts.get(i).getName()) == 0)
-            return true;
+    private boolean contactExists(Contact contact) {
+        String name = contact.getName();
+        int contactCount = Contacts.size();
+        for(int i = 0; i < contactCount; i++)
+        {
+            if (name.compareToIgnoreCase(Contacts.get(i).getName()) == 0)
+                return true;
+        }
+        return false;
     }
-    return false;
-}
 
     public void onActivityResult(int reqCode, int resCode, Intent data) {
         super.onActivityResult(reqCode, resCode, data);
@@ -230,10 +171,10 @@ private boolean contactExists(Contact contact) {
         Contacts.add(new Contact(name, phone, email, address, ));
     }*/
 
-/*
+
     private class ContactListAdapter extends ArrayAdapter<Contact> {
         public ContactListAdapter() {
-            super (MainActivity.this, R.layout.listview_item, Contacts);
+            super (AddContact.this, R.layout.listview_item, Contacts);
         }
 
         @Override
@@ -262,7 +203,11 @@ private boolean contactExists(Contact contact) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
-    }*/
+    }
+
+    }
 
 
-}
+
+
+

@@ -18,7 +18,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     private static final int DATABASE_VERSION = 1;
 
-    private static final String DATABASE_NAME = "cantactManager",
+    private static final String DATABASE_NAME = "contactManager",
     TABLE_CONTACTS = "contacts",
     KEY_ID = "id",
     KEY_NAME = "name",

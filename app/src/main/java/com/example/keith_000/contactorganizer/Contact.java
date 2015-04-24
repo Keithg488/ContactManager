@@ -13,7 +13,7 @@ public class Contact  {
 
     public Contact (int id, String name, String phone, String email, String address, Uri imageUri) {
 
-_id = id;
+        _id = id;
         _name = name;
         _phone = phone;
         _email = email;
