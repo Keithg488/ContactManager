@@ -6,7 +6,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.net.Uri;
-import android.os.Build;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +25,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     KEY_EMAIL = "email",
     KEY_ADDRESS = "address",
     KEY_IMAGEURI = "imageUri";
+
 
     public DatabaseHandler(Context context){
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -53,8 +53,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put(KEY_PHONE, contact.getPhone());
         values.put(KEY_EMAIL, contact.getEmail());
         values.put(KEY_ADDRESS, contact.getAddress());
-        values.put(KEY_IMAGEURI, contact.getImageUri().toString());
-
+        values.put(KEY_IMAGEURI, contact.getImageURI().toString());
         db.insert(TABLE_CONTACTS, null, values);
         db.close();
     }
@@ -67,7 +66,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         if(cursor != null)
             cursor.moveToFirst();
 
-        Contact contact = new Contact(Integer.parseInt(cursor.getString(0)), cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4), Uri.parse(cursor.getString(5)));
+        Contact contact = new Contact(Integer.parseInt(cursor.getString(0)), cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4), Uri.parse(cursor.getString(5)),null,null,null,null,null,null);
         db.close();
         cursor.close();
         return contact;
@@ -97,7 +96,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put(KEY_PHONE, contact.getPhone());
         values.put(KEY_EMAIL, contact.getEmail());
         values.put(KEY_ADDRESS, contact.getAddress());
-        values.put(KEY_IMAGEURI, contact.getImageUri().toString());
+        values.put(KEY_IMAGEURI, contact.getImageURI().toString());
 
         int rowsAffected = db.update(TABLE_CONTACTS, values, KEY_ID + "=?", new String[] {String.valueOf(contact.getId()) });
 
@@ -113,7 +112,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         if (cursor.moveToFirst()) {
 
             do {
-                contacts.add(new Contact(Integer.parseInt(cursor.getString(0)), cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4), Uri.parse(cursor.getString(5))));
+                contacts.add(new Contact(Integer.parseInt(cursor.getString(0)), cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4), Uri.parse(cursor.getString(5)),null,null,null,null,null,null));
                }
             while  (cursor.moveToNext());
         }

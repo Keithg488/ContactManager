@@ -3,37 +3,206 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@drawable/uptacts_gradient">
 
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="My Contacts"
-            android:id="@+id/textView"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="120dp" />
-
-        <Button
-            android:layout_width="44dp"
-            android:layout_height="wrap_content"
-            android:text="+"
-            android:id="@+id/btnAdd"
-            android:textSize="26dp"
-            android:textStyle="bold"
-            android:layout_gravity="right"
-            android:layout_marginLeft="80dp" />
-    </LinearLayout>
-
-    <ListView
+    <TabHost
         android:layout_width="fill_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/listView"
-        android:layout_gravity="center"/>
+        android:layout_height="fill_parent"
+        android:id="@+id/tabHost"
+        android:layout_gravity="left|center_vertical">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical">
+
+            <TabWidget
+                android:id="@android:id/tabs"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:touchscreenBlocksFocus="false">
+            </TabWidget>
+
+            <FrameLayout
+                android:id="@android:id/tabcontent"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+                <ScrollView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+                <LinearLayout
+                    android:id="@+id/tabCreator"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="@string/add_con"
+                        android:id="@+id/textView4"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="10dp"
+                        android:textStyle="bold"/>
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="100dp"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="15dp" >
+
+                        <ImageView
+                            android:layout_width="150dp"
+                            android:layout_height="100dp"
+                            android:id="@+id/imgViewContactImage"
+                            android:src="@drawable/no_user_logo"
+                            android:layout_marginLeft="10dp" />
+
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent" >
+
+                            <EditText
+                                android:layout_width="match_parent"
+                                android:layout_height="50dp"
+                                android:inputType="textPersonName"
+                                android:ems="10"
+                                android:id="@+id/txtName"
+                                android:hint="Contact Name" />
+
+                            <EditText
+                                android:layout_width="match_parent"
+                                android:layout_height="50dp"
+                                android:inputType="phone"
+                                android:ems="10"
+                                android:id="@+id/txtPhone"
+                                android:hint="Phone Number"
+                                android:layout_gravity="left|bottom" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <EditText
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:id="@+id/txtEmail"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="20dp"
+                        android:hint="Email"
+                        android:inputType="textEmailAddress" />
+
+                    <EditText
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:id="@+id/txtAddress"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="15dp"
+                        android:hint="Address"
+                        android:inputType="textPostalAddress" />
+
+                    <EditText
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textEmailAddress"
+                        android:ems="10"
+                        android:id="@+id/txtFacebook"
+                        android:hint="Facebook"
+                        android:layout_marginTop="15dp" />
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textEmailAddress"
+                        android:ems="10"
+                        android:id="@+id/txtTwitter"
+                        android:hint="Twitter"
+                        android:layout_marginTop="15dp"
+                        android:layout_gravity="center_horizontal" />
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textEmailAddress"
+                        android:ems="10"
+                        android:id="@+id/txtInsta"
+                        android:hint="Instagram"
+                        android:layout_marginTop="15dp"
+                        android:layout_gravity="right" />
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:id="@+id/txtBirth"
+                        android:hint="Birthday"
+                        android:layout_marginTop="15dp"
+                        android:layout_gravity="center_horizontal"
+                        android:inputType="date" />
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:id="@+id/txtNickName"
+                        android:hint="Nickname"
+                        android:layout_marginTop="15dp"
+                        android:layout_gravity="center_horizontal"
+                        android:inputType="date" />
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:id="@+id/txtCompany"
+                        android:hint="Company"
+                        android:layout_marginTop="15dp"
+                        android:layout_gravity="center_horizontal"
+                        android:inputType="date" />
+
+                    <Button
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:text="Add Contact"
+                        android:id="@+id/btnAdd"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="20dp"
+                        android:enabled="false"
+                        android:clickable="false"
+                        android:background="#ff9b9a8e"
+                        android:textColor="#ff000000" />
+                </LinearLayout>
+            </ScrollView>
+                <LinearLayout
+                    android:id="@+id/tabContactList"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="@string/con_lst"
+                        android:id="@+id/textView"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:textStyle="bold"/>
+
+                    <ListView
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:id="@+id/listView"
+                        android:layout_gravity="center"/>
+                </LinearLayout>
+
+            </FrameLayout>
+        </LinearLayout>
+    </TabHost>
 
 </LinearLayout>
